@@ -4,7 +4,7 @@
 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
+    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
     return prompt();
 }
 function randomPlay() {
@@ -20,7 +20,7 @@ function randomPlay() {
 ////////////////////////////////////////////////
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
-
+//This works in google dev tools but not in REPL
 function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
@@ -86,7 +86,12 @@ function playToFive() {
     while (playerWins < 5 && computerWins < 5) {
         var playerMove = getPlayerMove();
         var computerMove = getComputerMove();
-        var winner = getWinner();
+        var winner = getWinner(playerMove, computerMove);
+        //missed coding the getwinner(playerMove, computerMove)properly, 
+        //that is why the code didn't work initially
+        //per reviewer, By declaring the variables here within the loop playToFive
+        //function you reset them each time the loop is run.
+        //You need to have new moves and a new winner for each round.
 
         if (winner === "player") {
           console.log("Player chose: " + " " + playerMove + " and \nComputer chose:" + " " + computerMove);
@@ -108,5 +113,6 @@ function playToFive() {
       }
     return [playerWins, computerWins];
 }
-}
+
+
 playToFive();
